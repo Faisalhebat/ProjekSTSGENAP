@@ -7,10 +7,12 @@ body {
       header {
         text-align: center;
         margin-bottom: 30px;
+        color: white !important;
+
       }
 
       .card3 {
         background: linear-gradient(135deg, #1e293b, #545558);
-        color: #f8fafc;
+         color: white !important;
         width: 20rem;
       }
