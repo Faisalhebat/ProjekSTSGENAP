@@ -1,0 +1,16 @@
+body {
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+        color: #f8fafc;
+        padding: 30px;
+      }
+
+      header {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .card3 {
+        background: linear-gradient(135deg, #1e293b, #545558);
+        color: #f8fafc;
+        width: 20rem;
+      }
