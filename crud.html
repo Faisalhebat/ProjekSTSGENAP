@@ -8,230 +8,56 @@
 
   <body>
     <div class="header2">
-      <h1><i class="fa-solid fa-comments"></i> Keluhan Warga</h1>
-      <div class="btn-add2" onclick="buka2()">+ Tambah Keluhan</div>
-    </div>
+<h1>Keluhan Warga</h1>
+<div class="btn-add2" onclick="buka2()">+ Tambahkan Keluhan</div>
+</div>
 
-    <div class="search2">
-      <input
-        type="text"
-        id="cari2"
-        placeholder=" Cari nama warga..."
-        onkeyup="tampil2()"
-      />
-    </div>
+<div class="search2">
+<input type="text" id="cari2" placeholder="Cari..." onkeyup="tampil2()">
+</div>
 
-    <div class="data2">
-      <div class="box2">
-        <h3>Total</h3>
-        <h1 id="total2">0</h1>
-      </div>
-      <div class="box2">
-        <h3>Menunggu</h3>
-        <h1 id="menunggu2">0</h1>
-      </div>
-      <div class="box2">
-        <h3>Diproses</h3>
-        <h1 id="diproses2">0</h1>
-      </div>
-      <div class="box2">
-        <h3>Selesai</h3>
-        <h1 id="selesai2">0</h1>
-      </div>
-    </div>
+<div class="data2">
+<div class="box2"><h3>Total</h3><h1 id="total2">0</h1></div>
+<div class="box2"><h3>Diproses</h3><h1 id="diproses2">0</h1></div>
+<div class="box2"><h3>Selesai</h3><h1 id="selesai2">0</h1></div>
+</div>
 
-    <div id="list2"></div>
+<div id="list2"></div>
 
-    <div id="popup2" class="popup2">
-      <div class="form2">
-        <h2><i class="fa-solid fa-edit"></i> Form Keluhan</h2>
+<div id="popup2" class="popup2">
+<div class="form2">
+<h2>Form Keluhan</h2>
 
-        <input id="nama2" type="text" placeholder=" Nama Lengkap" />
+<input id="nama2" type="text" placeholder="Nama Lengkap">
 
-        <div class="dataformat2">
-          <input id="blok2" type="text" placeholder=" Blok Rumah" />
-          <input id="umur2" type="number" placeholder=" Umur" />
-        </div>
+<div class="dataformat2">
+<input id="blok2" type="text" placeholder="Blok Rumah">
+<input id="umur2" type="number" placeholder="Umur">
+</div>
 
-        <input id="telp2" type="tel" placeholder=" No. WhatsApp" />
+<input id="telp2" type="number" placeholder="No HP">
+<input id="tanggal2" type="date">
 
-        <select id="jenis2">
-          <option value="">Pilih Jenis Keluhan</option>
-          <option value="Infrastruktur">Infrastruktur</option>
-          <option value="Keamanan">Keamanan</option>
-          <option value="Kebersihan">Kebersihan</option>
-          <option value="Lainnya">Lainnya</option>
-        </select>
+<select id="jenis2">
+<option>Infrastruktur</option>
+<option>Keamanan</option>
+<option>Kebersihan</option>
+</select>
 
-        <textarea
-          id="deskripsi2"
-          placeholder=" Jelaskan keluhan Anda secara detail..."
-          rows="4"
-        ></textarea>
+<textarea id="deskripsi2" placeholder="Jelaskan keluhan anda"></textarea>
 
-        <select id="status2">
-          <option value="Menunggu">Menunggu</option>
-          <option value="Diproses">Diproses</option>
-          <option value="Selesai">Selesai</option>
-        </select>
+<select id="status2">
+<option>Menunggu</option>
+<option>Diproses</option>
+<option>Selesai</option>
+</select>
 
-        <div class="btn-group2">
-          <button class="btn-submit2" onclick="simpan2()">Simpan</button>
-          <button class="btn-cancel2" onclick="tutup2()">Batal</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- <script>
-      let data2 = [];
-      let editIndex2 = -1;
-      let modal2 = document.getElementById("popup2");
-
-      window.onload = function () {
-        const savedData = localStorage.getItem("dataKeluhan");
-        if (savedData) {
-          data2 = JSON.parse(savedData);
-        }
-        tampil2();
-      };
-
-      function buka2() {
-        modal2.style.display = "block";
-        document.body.style.overflow = "hidden";
-      }
-
-      function tutup2() {
-        modal2.style.display = "none";
-        document.body.style.overflow = "auto";
-
-        document.getElementById("nama2").value = "";
-        document.getElementById("blok2").value = "";
-        document.getElementById("umur2").value = "";
-        document.getElementById("telp2").value = "";
-        document.getElementById("jenis2").value = "";
-        document.getElementById("deskripsi2").value = "";
-        document.getElementById("status2").value = "Menunggu";
-
-        editIndex2 = -1;
-      }
-
-      function simpan2() {
-        const nama = document.getElementById("nama2").value;
-        const blok = document.getElementById("blok2").value;
-        const umur = document.getElementById("umur2").value;
-        const telp = document.getElementById("telp2").value;
-        const deskripsi = document.getElementById("deskripsi2").value;
-
-        if (!nama || !blok || !umur || !telp || !deskripsi) {
-          alert("⚠️ Lengkapi semua field yang wajib!");
-          return;
-        }
-
-        let obj = {
-          nama: nama,
-          blok: blok,
-          umur: umur,
-          telp: telp,
-          jenis: document.getElementById("jenis2").value,
-          deskripsi: deskripsi,
-          status: document.getElementById("status2").value,
-        };
-
-        if (editIndex2 === -1) {
-          data2.push(obj);
-          alert("✅ Keluhan berhasil ditambahkan!");
-        } else {
-          data2[editIndex2] = obj;
-          alert("✅ Data berhasil diupdate!");
-          editIndex2 = -1;
-        }
-
-        localStorage.setItem("dataKeluhan", JSON.stringify(data2));
-
-        tutup2();
-        tampil2();
-      }
-
-      function tampil2() {
-        const list2 = document.getElementById("list2");
-        const cari2 = document.getElementById("cari2").value.toLowerCase();
-
-        list2.innerHTML = "";
-
-        let total = 0,
-          menunggu = 0,
-          diproses = 0,
-          selesai = 0;
-
-        data2.forEach((d, i) => {
-          if (
-            d.nama.toLowerCase().includes(cari2) ||
-            d.blok.toLowerCase().includes(cari2)
-          ) {
-            total++;
-
-            if (d.status === "Menunggu") menunggu++;
-            if (d.status === "Diproses") diproses++;
-            if (d.status === "Selesai") selesai++;
-
-            let warna = "#334155";
-            if (d.status === "Diproses") warna = "#10b981";
-            if (d.status === "Selesai") warna = "#059669";
-
-            list2.innerHTML += `
-        <div class="card2">
-          <h3>${d.nama} 
-            <span class="totaldata2" style="background:${warna}; color: white; padding: 5px 12px; border-radius: 20px; font-size: 12px;">${d.status}</span>
-          </h3>
-          <p><strong>🏠</strong> Blok ${d.blok} • ${d.umur} tahun • <strong>📱</strong> ${d.telp}</p>
-          <p><strong>📋 ${d.jenis}</strong></p>
-          <p>${d.deskripsi}</p>
-          <div style="margin-top: 15px;">
-            <button class="btn-edit2" onclick="edit2(${i})">✏️ Edit</button>
-            <button class="btn-delete2" onclick="hapus2(${i})">🗑️ Hapus</button>
-          </div>
-        </div>`;
-          }
-        });
-
-        document.getElementById("total2").innerText = total;
-        document.getElementById("menunggu2").innerText = menunggu;
-        document.getElementById("diproses2").innerText = diproses;
-        document.getElementById("selesai2").innerText = selesai;
-      }
-
-      function edit2(i) {
-        const d = data2[i];
-
-        document.getElementById("nama2").value = d.nama;
-        document.getElementById("blok2").value = d.blok;
-        document.getElementById("umur2").value = d.umur;
-        document.getElementById("telp2").value = d.telp;
-        document.getElementById("jenis2").value = d.jenis;
-        document.getElementById("deskripsi2").value = d.deskripsi;
-        document.getElementById("status2").value = d.status;
-
-        editIndex2 = i;
-        buka2();
-      }
-
-      function hapus2(i) {
-        if (confirm("🗑️ Yakin ingin menghapus keluhan ini?")) {
-          data2.splice(i, 1);
-
-          localStorage.setItem("dataKeluhan", JSON.stringify(data2));
-
-          tampil2();
-          alert("✅ Data berhasil dihapus!");
-        }
-      }
-
-      window.onclick = function (e) {
-        if (e.target === modal2) {
-          tutup2();
-        }
-      };
-    </script> -->
+<div class="btn-group2">
+<div class="btn-submit2" onclick="simpan2()">Simpan</div>
+<div class="btn-cancel2" onclick="tutup2()">Batal</div>
+</div>
+</div>
+</div>
     <script src="js/crud.js"></script>
   </body>
 </html>

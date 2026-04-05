@@ -1,148 +1,129 @@
-let data2 = [];
-      let editIndex2 = -1;
-      let modal2 = document.getElementById("popup2");
+let data2 = JSON.parse(localStorage.getItem("keluhanData")) || [];
+let editIndex2 = -1;
+let modal2 = document.getElementById("popup2");
 
-      window.onload = function () {
-        const savedData = localStorage.getItem("dataKeluhan");
-        if (savedData) {
-          data2 = JSON.parse(savedData);
-        }
-        tampil2();
-      };
+function saveLocal(){
+  localStorage.setItem("keluhanData", JSON.stringify(data2));
+}
 
-      function buka2() {
-        modal2.style.display = "block";
-        document.body.style.overflow = "hidden";
-      }
+function formatTanggal(tgl){
+  let b = ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
+  let d = new Date(tgl);
+  return d.getDate() + " " + b[d.getMonth()] + " " + d.getFullYear();
+}
 
-      function tutup2() {
-        modal2.style.display = "none";
-        document.body.style.overflow = "auto";
+function buka2(){
+  modal2.style.display = "block";
+}
 
-        document.getElementById("nama2").value = "";
-        document.getElementById("blok2").value = "";
-        document.getElementById("umur2").value = "";
-        document.getElementById("telp2").value = "";
-        document.getElementById("jenis2").value = "";
-        document.getElementById("deskripsi2").value = "";
-        document.getElementById("status2").value = "Menunggu";
+function tutup2(){
+  modal2.style.display = "none";
+  nama2.value = "";
+  blok2.value = "";
+  umur2.value = "";
+  telp2.value = "";
+  deskripsi2.value = "";
+  tanggal2.value = "";
+  editIndex2 = -1;
+}
 
-        editIndex2 = -1;
-      }
+function simpan2(){
+  if (!nama2.value || !blok2.value || !umur2.value || !telp2.value || !deskripsi2.value || !tanggal2.value){
+    alert("Lengkapi formnya terlebih dahulu!");
+    return;
+  }
 
-      function simpan2() {
-        const nama = document.getElementById("nama2").value;
-        const blok = document.getElementById("blok2").value;
-        const umur = document.getElementById("umur2").value;
-        const telp = document.getElementById("telp2").value;
-        const deskripsi = document.getElementById("deskripsi2").value;
+  let obj = {
+    nama: nama2.value,
+    blok: blok2.value,
+    umur: umur2.value,
+    telp: telp2.value,
+    tanggal: formatTanggal(tanggal2.value),
+    jenis: jenis2.value,
+    deskripsi: deskripsi2.value,
+    status: status2.value
+  };
 
-        if (!nama || !blok || !umur || !telp || !deskripsi) {
-          alert("⚠️ Lengkapi semua field yang wajib!");
-          return;
-        }
+  if (editIndex2 == -1){
+    data2.push(obj);
+  } else {
+    data2[editIndex2] = obj;
+  }
 
-        let obj = {
-          nama: nama,
-          blok: blok,
-          umur: umur,
-          telp: telp,
-          jenis: document.getElementById("jenis2").value,
-          deskripsi: deskripsi,
-          status: document.getElementById("status2").value,
-        };
+  saveLocal();
+  tutup2();
+  tampil2();
+}
 
-        if (editIndex2 === -1) {
-          data2.push(obj);
-          alert("✅ Keluhan berhasil ditambahkan!");
-        } else {
-          data2[editIndex2] = obj;
-          alert("✅ Data berhasil diupdate!");
-          editIndex2 = -1;
-        }
+function tampil2(){
+  list2.innerHTML = "";
 
-        localStorage.setItem("dataKeluhan", JSON.stringify(data2));
+  let total = 0, diproses = 0, selesai = 0;
+  let keyword = cari2.value.toLowerCase();
 
-        tutup2();
-        tampil2();
-      }
+  data2.forEach((d,i)=>{
+    if (d.nama.toLowerCase().includes(keyword)){
+      total++;
+      if(d.status=="Diproses") diproses++;
+      if(d.status=="Selesai") selesai++;
 
-      function tampil2() {
-        const list2 = document.getElementById("list2");
-        const cari2 = document.getElementById("cari2").value.toLowerCase();
+      let warna = "#334155";
+      if (d.status=="Diproses") warna="#10b981";
+      if (d.status=="Selesai") warna="#064e3b";
 
-        list2.innerHTML = "";
+      list2.innerHTML += `
+      <div class="card2">
+        <h3>${d.nama} 
+        <span style="background:${warna}">${d.status}</span></h3>
+        <p>Blok ${d.blok} • ${d.umur} tahun • ${d.telp}</p>
+        <p>${d.jenis}</p>
+        <p>${d.deskripsi}</p>
+        <p style="margin-top:10px; font-size:12px; opacity:0.7;">${d.tanggal}</p>
+        <button class="btn-edit2" onclick="edit2(${i})">Edit</button>
+        <button class="btn-delete2" onclick="hapus2(${i})">Hapus</button>
+      </div>`;
+    }
+  });
 
-        let total = 0,
-          menunggu = 0,
-          diproses = 0,
-          selesai = 0;
+  total2.innerText = total;
+  diproses2.innerText = diproses;
+  selesai2.innerText = selesai;
+}
 
-        data2.forEach((d, i) => {
-          if (
-            d.nama.toLowerCase().includes(cari2) ||
-            d.blok.toLowerCase().includes(cari2)
-          ) {
-            total++;
+function edit2(i){
+  if (confirm("Yakin mau edit data ini?")) {
+    let d = data2[i];
 
-            if (d.status === "Menunggu") menunggu++;
-            if (d.status === "Diproses") diproses++;
-            if (d.status === "Selesai") selesai++;
+    nama2.value = d.nama;
+    blok2.value = d.blok;
+    umur2.value = d.umur;
+    telp2.value = d.telp;
+    jenis2.value = d.jenis;
+    deskripsi2.value = d.deskripsi;
+    status2.value = d.status;
 
-            let warna = "#334155";
-            if (d.status === "Diproses") warna = "#10b981";
-            if (d.status === "Selesai") warna = "#059669";
+    editIndex2 = i;
+    buka2();
+  } else {
+    alert("Dibatalkan");
+  }
+}
 
-            list2.innerHTML += `
-        <div class="card2">
-          <h3>${d.nama} 
-            <span class="totaldata2" style="background:${warna}; color: white; padding: 5px 12px; border-radius: 20px; font-size: 12px;">${d.status}</span>
-          </h3>
-          <p><strong>🏠</strong> Blok ${d.blok} • ${d.umur} tahun • <strong>📱</strong> ${d.telp}</p>
-          <p><strong>📋 ${d.jenis}</strong></p>
-          <p>${d.deskripsi}</p>
-          <div style="margin-top: 15px;">
-            <button class="btn-edit2" onclick="edit2(${i})">✏️ Edit</button>
-            <button class="btn-delete2" onclick="hapus2(${i})">🗑️ Hapus</button>
-          </div>
-        </div>`;
-          }
-        });
+function hapus2(i){
+  if (confirm("Yakin mau hapus data ini?")) {
+    data2.splice(i, 1);
+    saveLocal();
+    tampil2();
+    alert("Data berhasil dihapus");
+  } else {
+    alert("Dibatalkan");
+  }
+}
 
-        document.getElementById("total2").innerText = total;
-        document.getElementById("menunggu2").innerText = menunggu;
-        document.getElementById("diproses2").innerText = diproses;
-        document.getElementById("selesai2").innerText = selesai;
-      }
+window.onclick = function(e){
+  if(e.target == modal2){
+    tutup2();
+  }
+}
 
-      function edit2(i) {
-        const d = data2[i];
-
-        document.getElementById("nama2").value = d.nama;
-        document.getElementById("blok2").value = d.blok;
-        document.getElementById("umur2").value = d.umur;
-        document.getElementById("telp2").value = d.telp;
-        document.getElementById("jenis2").value = d.jenis;
-        document.getElementById("deskripsi2").value = d.deskripsi;
-        document.getElementById("status2").value = d.status;
-
-        editIndex2 = i;
-        buka2();
-      }
-
-      function hapus2(i) {
-        if (confirm("🗑️ Yakin ingin menghapus keluhan ini?")) {
-          data2.splice(i, 1);
-
-          localStorage.setItem("dataKeluhan", JSON.stringify(data2));
-
-          tampil2();
-          alert("✅ Data berhasil dihapus!");
-        }
-      }
-
-      window.onclick = function (e) {
-        if (e.target === modal2) {
-          tutup2();
-        }
-      };
+tampil2();
