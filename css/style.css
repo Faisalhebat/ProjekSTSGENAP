@@ -1,0 +1,385 @@
+@font-face {
+    font-family: 'FontKeren';
+    src: url('fonthero.otf') format('truetype');
+}
+
+:root {
+  --bg-main: #0f172a;
+  --bg-card: #1e293b;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --green-accent: #10b981;
+  --green-dark: #064e3b;
+  --border-color: #334155;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background: linear-gradient(to bottom, #0d2356, black);
+  color: var(--text-main);
+  min-height: 100vh;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.logologo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logoikon i {
+  font-size: 1.8rem;
+  color: var(--green-accent);
+}
+
+.logoteks h1 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.logoteks p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.btnkeluhan {
+  background: transparent;
+  border: 1px solid var(--green-accent);
+  color: var(--green-accent);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btnkeluhan:hover {
+  background: var(--green-accent);
+  color: black;
+}
+
+.herosection {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.judul {
+  font-size:80px;
+  font-family: 'FontKeren';
+}
+
+.erteerwe {
+  color: var(--green-accent);
+}
+
+.katakecil {
+  color: var(--text-muted);
+  font-size: x-large;
+  margin-bottom: 1.5rem;
+}
+
+.melayani {
+  color: var(--green-accent);
+  margin-bottom: 2rem;
+}
+
+.kartu {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 250px;
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-decoration: none;
+  position: relative;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.carditem {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: white;
+}
+
+.cardijo {
+  background: var(--green-accent);
+  color: black;
+}
+
+.cardicon {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+
+img, video, canvas, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+
+@media (max-width: 992px) {
+  .judul {
+    font-size: 60px; 
+  }
+}
+
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column; 
+    gap: 1rem;
+    text-align: center;
+    padding: 1.5rem 1rem;
+  }
+
+  .judul {
+    font-size: 40px; 
+    line-height: 1.2;
+  }
+
+  .katakecil {
+    font-size: 1rem;
+  }
+
+  .kartu {
+    flex-direction: column; 
+    align-items: center;
+  }
+
+  .card {
+    width: 90%; 
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  .judul {
+    font-size: 32px;
+  }
+  
+  .logoteks h1 {
+    font-size: 1rem;
+  }
+}
+
+.riwayat-section {
+  max-width: 1200px;
+  margin: 4rem auto;
+  padding: 0 1rem;
+}
+
+.riwayat-section h3 {
+  color: var(--text-main);
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.riwayat-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.riwayat-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: 0.3s;
+}
+
+.riwayat-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.riwayat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.riwayat-header h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--text-main);
+}
+
+.status-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.status-menunggu {
+  background: #334155;
+  color: #94a3b8;
+}
+
+.status-diproses {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+}
+
+.status-selesai {
+  background: linear-gradient(135deg, #064e3b, #047857);
+  color: white;
+}
+
+.riwayat-info {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin: 0.5rem 0;
+}
+
+.riwayat-jenis {
+  color: var(--green-accent);
+  font-size: 0.9rem;
+  margin: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.riwayat-desc {
+  color: var(--text-main);
+  margin: 0.5rem 0 0 0;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .riwayat-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .riwayat-section {
+    margin: 2rem auto;
+  }
+}
+
+/* Tambahkan di akhir style.css */
+.semuacard1 {
+  max-width: 1200px;
+  margin: 4rem auto;
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.card1 {
+  background: var(--bg-card);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: 0.3s;
+  border: 1px solid var(--border-color);
+}
+
+.card1:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.card__photo1 {
+  height: 200px;
+  overflow: hidden;
+}
+
+.card__photo1 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card__info1 {
+  padding: 1.5rem;
+}
+
+.card__name-row1 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.card__name1 {
+  font-weight: 700;
+  color: var(--text-main);
+  font-size: 1.1rem;
+}
+
+.card__verified1 {
+  width: 20px;
+  height: 20px;
+}
+
+.card__bio1 {
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.card__footer1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card__stats1 {
+  display: flex;
+  gap: 1rem;
+}
+
+.card__stat1 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.card__stat1 svg {
+  width: 18px;
+  height: 18px;
+}
+
+.card__follow1 {
+  background: linear-gradient(135deg, var(--green-accent), #059669);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.card__follow1:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(16, 185, 129, 0.4);
+}
+
+.card__follow-plus1 {
+  margin-left: 0.25rem;
+  font-size: 1.2rem;
+}

@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portal RT 05 / RW 03</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logologo">
+        <div class="logoikon">
+          <i class="fa-solid fa-house"></i>
+        </div>
+        <div class="logoteks">
+          <h1>RT 05 / RW 03</h1>
+          <p>Perumahan GerroryFal</p>
+        </div>
+      </div>
+
+      <button class="btnkeluhan" onclick="window.location.href = 'CRUD.html'">
+        <i class="fa-solid fa-comment"></i> Keluhan Warga
+      </button>
+    </nav>
+
+    <main class="herosection">
+      <!-- Hero Section -->
+      <h2 class="judul">
+        Selamat Datang di Portal <br />
+        <span class="erteerwe">RT 05 / RW 03</span>
+      </h2>
+
+      <p class="katakecil">
+        Bersama membangun lingkungan yang aman, nyaman, dan sejahtera
+      </p>
+
+      <div class="melayani">
+        <i class="fa-solid fa-hand-holding-heart"></i>
+        Melayani dengan Hati
+      </div>
+
+      <div class="kartu">
+        <a
+          href="siskamling.html"
+          class="card carditem"
+          onclick="showSiskamling()"
+        >
+          <div class="card-icon">
+            <i class="fa-regular fa-calendar-check"></i>
+          </div>
+          <h3>Jadwal Siskamling</h3>
+          <p>Lihat jadwal ronda malam hari ini</p>
+        </a>
+
+        <a href="crud.html" class="card cardijo">
+          <div class="cardicon">
+            <i class="fa-regular fa-comments"></i>
+          </div>
+          <h3>Keluhan Warga</h3>
+          <p>Sampaikan aspirasi dan keluhan Anda</p>
+        </a>
+      </div>
+
+      <div class="riwayat-section">
+        <h3><i class="fa-solid fa-clock-rotate-left"></i> Keluhan Terbaru</h3>
+        <div id="riwayat-keluhan" class="riwayat-container">
+          <!-- Riwayat akan dimuat di sini -->
+        </div>
+      </div>
+
+      <div class="semuacard1">
+        <div class="card1">
+          <div class="card__photo1">
+            <img src="raffa.jpeg" alt="M. Gerrard Habibie" />
+          </div>
+
+          <div class="card__info1">
+            <div class="card__name-row1">
+              <span class="card__name1">M. Gerrard Habibie</span>
+              <svg class="card__verified1" viewBox="0 0 20 20" fill="none">
+                <circle cx="10" cy="10" r="10" fill="#1D9BF0" />
+                <path
+                  d="M5.5 10.5L8.5 13.5L14.5 7"
+                  stroke="white"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+
+            <p class="card__bio1">
+              Membangun pengalaman digital yang sederhana,<br />fungsional, dan
+              bermakna.
+            </p>
+
+            <div class="card__footer1">
+              <div class="card__stats1">
+                <div class="card__stat1">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                  </svg>
+                  KETUA RT
+                </div>
+              </div>
+              <button
+                class="card__follow1"
+                onclick="
+                  window.open(
+                    'https://www.instagram.com/7keajaibangerrard',
+                    '_blank',
+                  )
+                "
+              >
+                Follow <span class="card__follow-plus1">+</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card1">
+          <div class="card__photo1">
+            <img src="home2.png" alt="M. Faisal Firmansyah" />
+          </div>
+
+          <div class="card__info1">
+            <div class="card__name-row1">
+              <span class="card__name1">M. Faisal Firmansyah</span>
+              <svg class="card__verified1" viewBox="0 0 20 20" fill="none">
+                <circle cx="10" cy="10" r="10" fill="#1D9BF0" />
+                <path
+                  d="M5.5 10.5L8.5 13.5L14.5 7"
+                  stroke="white"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+
+            <p class="card__bio1">
+              A Product Designer focused on<br />intuitive user experiences.
+            </p>
+
+            <div class="card__footer1">
+              <div class="card__stats1">
+                <div class="card__stat1">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                  </svg>
+                  WAKIL RT
+                </div>
+              </div>
+              <button
+                class="card__follow1"
+                onclick="
+                  window.open(
+                    'https://www.instagram.com/paiisaallll_/',
+                    '_blank',
+                  )
+                "
+              >
+                Follow <span class="card__follow-plus1">+</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card1">
+          <div class="card__photo1">
+            <img src="home1.png" alt="Glory Glacia" />
+          </div>
+
+          <div class="card__info1">
+            <div class="card__name-row1">
+              <span class="card__name1">Glory Glacia</span>
+              <svg class="card__verified1" viewBox="0 0 20 20" fill="none">
+                <circle cx="10" cy="10" r="10" fill="#1D9BF0" />
+                <path
+                  d="M5.5 10.5L8.5 13.5L14.5 7"
+                  stroke="white"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+
+            <p class="card__bio1">
+              Dedicated to community service and<br />neighborhood development.
+            </p>
+
+            <div class="card__footer1">
+              <div class="card__stats1">
+                <div class="card__stat1">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                  </svg>
+                  SEKRETARIS
+                </div>
+              </div>
+              <button
+                class="card__follow1"
+                onclick="
+                  window.open('https://www.instagram.com/gloryglacia', '_blank')
+                "
+              >
+                Follow <span class="card__follow-plus1">+</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      function loadRiwayatKeluhan() {
+        const data2 = JSON.parse(localStorage.getItem("dataKeluhan") || "[]");
+        const container = document.getElementById("riwayat-keluhan");
+
+        const latestKeluhan = data2.slice(-5).reverse();
+
+        if (latestKeluhan.length === 0) {
+          container.innerHTML =
+            '<p style="text-align: center; color: var(--text-muted);">Belum ada keluhan</p>';
+          return;
+        }
+
+        container.innerHTML = latestKeluhan
+          .map(
+            (keluhan) => `
+        <div class="riwayat-item">
+          <div class="riwayat-header">
+            <h4>${keluhan.nama}</h4>
+            <span class="status-badge status-${keluhan.status.toLowerCase().replace(" ", "-")}">${keluhan.status}</span>
+          </div>
+          <p class="riwayat-info">Blok ${keluhan.blok} • ${keluhan.umur} thn</p>
+          <p class="riwayat-jenis"><i class="fa-solid fa-tag"></i> ${keluhan.jenis}</p>
+          <p class="riwayat-desc">${keluhan.deskripsi.substring(0, 80)}${keluhan.deskripsi.length > 80 ? "..." : ""}</p>
+        </div>
+      `,
+          )
+          .join("");
+      }
+
+      function showSiskamling() {
+        alert("Fitur jadwal siskamling akan segera hadir!");
+      }
+
+      window.onload = function () {
+        loadRiwayatKeluhan();
+      };
+    </script>
+  </body>
+</html>

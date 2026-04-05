@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>kamling</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+        color: #f8fafc;
+        padding: 30px;
+      }
+
+      header {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .card3 {
+        background: linear-gradient(135deg, #1e293b, #545558);
+        color: #f8fafc;
+        width: 20rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>Jadwal Siskamling</h1>
+      <h2>Sistem keamanan lingkungan</h2>
+      <p>Jadwal ronda malam hari ini</p>
+    </header>
+
+    <main>
+      <div id="jadwal" class="d-flex flex-wrap gap-3">
+        <!-- Card senin -->
+        <div class="card card3 p-3 m-3">
+          <div class="card-header bg-primary text-white">Senin</div>
+
+          <div id="list-0" class="mt-3"></div>
+
+          <input
+            id="input-0"
+            class="form-control mt-2"
+            placeholder="Tambah nama"
+          />
+          <button class="btn btn-primary mt-2" onclick="tambah3(0)">
+            Tambah
+          </button>
+        </div>
+
+        <!-- Card selasa -->
+        <div class="card card3 p-3 m-3">
+          <div class="card-header bg-primary text-white">Selasa</div>
+
+          <div id="list-1" class="mt-3"></div>
+
+          <input
+            id="input-1"
+            class="form-control mt-2"
+            placeholder="Tambah nama"
+          />
+          <button class="btn btn-primary mt-2" onclick="tambah3(1)">
+            Tambah
+          </button>
+        </div>
+
+        <!-- Card rabu -->
+        <div class="card card3 p-3 m-3">
+          <div class="card-header bg-primary text-white">Rabu</div>
+
+          <div id="list-2" class="mt-3"></div>
+
+          <input
+            id="input-2"
+            class="form-control mt-2"
+            placeholder="Tambah nama"
+          />
+          <button class="btn btn-primary mt-2" onclick="tambah3(2)">
+            Tambah
+          </button>
+        </div>
+
+        <!-- Card kamis -->
+        <div class="card card3 p-3 m-3">
+          <div class="card-header bg-primary text-white">Kamis</div>
+
+          <div id="list-3" class="mt-3"></div>
+
+          <input
+            id="input-3"
+            class="form-control mt-2"
+            placeholder="Tambah nama"
+          />
+          <button class="btn btn-primary mt-2" onclick="tambah3(3)">
+            Tambah
+          </button>
+        </div>
+
+        <!-- Card jumat -->
+        <div class="card card3 p-3 m-3">
+          <div class="card-header bg-primary text-white">Jumat</div>
+
+          <div id="list-4" class="mt-3"></div>
+
+          <input
+            id="input-4"
+            class="form-control mt-2"
+            placeholder="Tambah nama"
+          />
+          <button class="btn btn-primary mt-2" onclick="tambah3(4)">
+            Tambah
+          </button>
+        </div>
+
+        <!-- Card sabtu -->
+        <div class="card card3 p-3 m-3">
+          <div class="card-header bg-primary text-white">Sabtu</div>
+
+          <div id="list-5" class="mt-3"></div>
+
+          <input
+            id="input-5"
+            class="form-control mt-2"
+            placeholder="Tambah nama"
+          />
+          <button class="btn btn-primary mt-2" onclick="tambah3(5)">
+            Tambah
+          </button>
+        </div>
+
+        <!-- Card minggu -->
+        <div class="card card3 p-3 m-3">
+          <div class="card-header bg-primary text-white">Minggu</div>
+
+          <div id="list-6" class="mt-3"></div>
+
+          <input
+            id="input-6"
+            class="form-control mt-2"
+            placeholder="Tambah nama"
+          />
+          <button class="btn btn-primary mt-2" onclick="tambah3(6)">
+            Tambah
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      let data3 = [
+        { hari: "Senin", nama: ["akbar", "idonk"] },
+        { hari: "Selasa", nama: ["budi", "vconk"] },
+        { hari: "Rabu", nama: ["charlie", "puth"] },
+        { hari: "Kamis", nama: ["dewi", "garut"] },
+        { hari: "Jumat", nama: ["eko", "serasa"] },
+        { hari: "Sabtu", nama: ["fina", "ikut"] },
+        { hari: "Minggu", nama: ["nogkrong", "hendra"] },
+      ];
+
+      function tampil3() {
+        data3.forEach(function (hariData, hariIndex) {
+          let list = document.getElementById("list-" + hariIndex);
+          list.innerHTML = "";
+
+          if (hariData.nama.length === 0) {
+            list.innerHTML = "<p>Belum ada nama</p>";
+          } else {
+            hariData.nama.forEach(function (nama, namaIndex) {
+              list.innerHTML += `
+            <div class="d-flex justify-content-between mb-2">
+              <span>${nama}</span>
+              <div>
+                <button  class="btn btn-sm btn-success" onclick="edit3(${hariIndex}, ${namaIndex})">Edit</button>
+                <button class="btn btn-sm btn-danger" onclick="hapus3(${hariIndex}, ${namaIndex})">Hapus</button>
+              </div>
+            </div>
+          `;
+            });
+          }
+        });
+      }
+
+      function tambah3(index) {
+        let input = document.getElementById("input-" + index);
+        let nama = input.value;
+
+        if (nama !== "") {
+          data3[index].nama.push(nama);
+          input.value = "";
+          tampil3();
+        }
+      }
+
+      function hapus3(i, j) {
+        data3[i].nama.splice(j, 1);
+        tampil3();
+      }
+
+      function edit3(i, j) {
+        let namaBaru = prompt("edit nama:", data3[i].nama[j]);
+        if (namaBaru !== null) {
+          data3[i].nama[j] = namaBaru;
+          tampil3();
+          alert("nama diubha");
+        } else {
+          alert("edit dibatalkan");
+        }
+      }
+
+      tampil3();
+    </script>
+  </body>
+</html>
