@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'FontKeren';
-    src: url('fonthero.otf') format('truetype');
+    src: url('../assets/fonthero.otf') format('truetype');
 }
 
 :root {
